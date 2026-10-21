@@ -188,7 +188,9 @@
             color: #cbd5e1;
             font-family: monospace;
         }
-　　　　　　　const firebaseConfig ＝ 
+
+        /* User Auth UI */
+        .auth-bar {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -307,17 +309,19 @@
         import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Firebase Configuration ( Replace with your own config from Firebase Console )
+        // ★ Firebase Console からコピーした実際の値に置き換えてください ★
+        const myFirebaseConfig = {
+            apiKey: "YOUR_ACTUAL_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
         const firebaseConfig = typeof __firebase_config !== 'undefined' 
             ? JSON.parse(__firebase_config) 
-            : {
-                apiKey: "YOUR_API_KEY",
-                authDomain: "YOUR_PROJECT.firebaseapp.com",
-                projectId: "YOUR_PROJECT_ID",
-                storageBucket: "YOUR_PROJECT.appspot.com",
-                messagingSenderId: "YOUR_SENDER_ID",
-                appId: "YOUR_APP_ID"
-            };
+            : myFirebaseConfig;
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
